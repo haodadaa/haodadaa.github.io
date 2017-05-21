@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Android 6.0运行时权限 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="前言Android6.0的发布也证明了Google开始在安全和权限的控制，以及给用户更人性化的方式去使用Android系统。6.0带来了一个主要的新特性：运行时权限。在以前的版本，我们只需要在mainfest文件中声明所需要的权限，及可获得整个应用程序使用过程中的权限，这些权限在我们安装应用程序时会列出。而运行时权限则是当我们需要使用某个敏感权限时，弹出一个对话框，让用户去选择是否同意授权，这样一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 6.0运行时权限">
+<meta property="og:url" content="http://haodadaa.github.io/2017/05/19/Android-6.0运行时权限/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言Android6.0的发布也证明了Google开始在安全和权限的控制，以及给用户更人性化的方式去使用Android系统。6.0带来了一个主要的新特性：运行时权限。在以前的版本，我们只需要在mainfest文件中声明所需要的权限，及可获得整个应用程序使用过程中的权限，这些权限在我们安装应用程序时会列出。而运行时权限则是当我们需要使用某个敏感权限时，弹出一个对话框，让用户去选择是否同意授权，这样一">
+<meta property="og:updated_time" content="2017-05-19T18:38:41.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 6.0运行时权限">
+<meta name="twitter:description" content="前言Android6.0的发布也证明了Google开始在安全和权限的控制，以及给用户更人性化的方式去使用Android系统。6.0带来了一个主要的新特性：运行时权限。在以前的版本，我们只需要在mainfest文件中声明所需要的权限，及可获得整个应用程序使用过程中的权限，这些权限在我们安装应用程序时会列出。而运行时权限则是当我们需要使用某个敏感权限时，弹出一个对话框，让用户去选择是否同意授权，这样一">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Hexo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/head.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/head.png" />
+            <h2 id="name">豪大大</h2>
+            <h3 id="title">Android、Computer Gamer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>GuangZhou, China</span>
+            <a id="follow" target="_blank" href="https://github.com/haodadaa">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                4
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                0
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/haodadaa" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Android-6.0运行时权限" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Android 6.0运行时权限
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/19/Android-6.0运行时权限/">
+            <time datetime="2017-05-19T07:44:18.000Z" itemprop="datePublished">2017-05-19</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android6.0的发布也证明了Google开始在安全和权限的控制，以及给用户更人性化的方式去使用Android系统。6.0带来了一个主要的新特性：运行时权限。<br><br>在以前的版本，我们只需要在mainfest文件中声明所需要的权限，及可获得整个应用程序使用过程中的权限，这些权限在我们安装应用程序时会列出。<br><br>而运行时权限则是当我们需要使用某个敏感权限时，弹出一个对话框，让用户去选择是否同意授权，这样一定程度上保护了用户的隐私安全，这个处理权完全在用户手上。</p>
+<a id="more"></a>
+<hr>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>并非所有的权限都是需要用户同意的，不然用户需要授权的权限太多也影响了用户体验，而且并非所有的权限都是敏感权限。因此Android6.0对权限进行了分类，分类如下：</p>
+<h5 id="Normal-Permissions-正常权限"><a href="#Normal-Permissions-正常权限" class="headerlink" title="Normal Permissions 正常权限"></a>Normal Permissions 正常权限</h5><p>不涉及用户隐私，不会带来用户安全问题；安装时就授权，不会在提示用户授权。这类权限应用程序需要时，只需在mainfest文件中声明。主要包括：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">android.permission.ACCESS_LOCATION_EXTRA_COMMANDS</div><div class="line">android.permission.ACCESS_NETWORK_STATE</div><div class="line">android.permission.ACCESS_NOTIFICATION_POLICY</div><div class="line">android.permission.ACCESS_WIFI_STATE</div><div class="line">android.permission.ACCESS_WIMAX_STATE</div><div class="line">android.permission.BLUETOOTH</div><div class="line">android.permission.BLUETOOTH_ADMIN</div><div class="line">android.permission.BROADCAST_STICKY</div><div class="line">android.permission.CHANGE_NETWORK_STATE</div><div class="line">android.permission.CHANGE_WIFI_MULTICAST_STATE</div><div class="line">android.permission.CHANGE_WIFI_STATE</div><div class="line">android.permission.CHANGE_WIMAX_STATE</div><div class="line">android.permission.DISABLE_KEYGUARD</div><div class="line">android.permission.EXPAND_STATUS_BAR</div><div class="line">android.permission.FLASHLIGHT</div><div class="line">android.permission.GET_ACCOUNTS</div><div class="line">android.permission.GET_PACKAGE_SIZE</div><div class="line">android.permission.INTERNET</div><div class="line">android.permission.KILL_BACKGROUND_PROCESSES</div><div class="line">android.permission.MODIFY_AUDIO_SETTINGS</div><div class="line">android.permission.NFC</div><div class="line">android.permission.READ_SYNC_SETTINGS</div><div class="line">android.permission.READ_SYNC_STATS</div><div class="line">android.permission.RECEIVE_BOOT_COMPLETED</div><div class="line">android.permission.REORDER_TASKS</div><div class="line">android.permission.REQUEST_INSTALL_PACKAGES</div><div class="line">android.permission.SET_TIME_ZONE</div><div class="line">android.permission.SET_WALLPAPER</div><div class="line">android.permission.SET_WALLPAPER_HINTS</div><div class="line">android.permission.SUBSCRIBED_FEEDS_READ</div><div class="line">android.permission.TRANSMIT_IR</div><div class="line">android.permission.USE_FINGERPRINT</div><div class="line">android.permission.VIBRATE</div><div class="line">android.permission.WAKE_LOCK</div><div class="line">android.permission.WRITE_SYNC_SETTINGS</div><div class="line">com.android.alarm.permission.SET_ALARM</div><div class="line">com.android.launcher.permission.INSTALL_SHORTCUT</div><div class="line">com.android.launcher.permission.UNINSTALL_SHORTCUT</div></pre></td></tr></table></figure></p>
+<h5 id="Particular-Permissions特殊权限"><a href="#Particular-Permissions特殊权限" class="headerlink" title="Particular Permissions特殊权限"></a>Particular Permissions特殊权限</h5><p>特殊权限有两个：<br>SYSTEM_ALERT_WINDOW，设置悬浮窗，进行一些黑科技<br>WRITE_SETTINGS 修改系统设置<br><br>这两个特殊权限需要通过Intent隐式启动的方式来授权，通过startActivityForResult来完成授权和获取授权结果。</p>
+<h5 id="Dangerous-Permissions-危险权限"><a href="#Dangerous-Permissions-危险权限" class="headerlink" title="Dangerous Permissions 危险权限"></a>Dangerous Permissions 危险权限</h5><p>危险权限即我们本文主要要说明的运行时权限，以下权限需要在运行时判断：</p>
+<ul>
+<li><p>身体传感器BodySensor</p>
+</li>
+<li><p>日历Calendar</p>
+</li>
+<li><p>摄像头Camera</p>
+</li>
+<li><p>通讯录Contacts</p>
+</li>
+<li><p>地理位置Location</p>
+</li>
+<li><p>麦克风MicroPhone</p>
+</li>
+<li><p>电话Phone</p>
+</li>
+<li><p>短信SMS</p>
+</li>
+<li><p>存储空间Storage </p>
+</li>
+</ul>
+<p>权限分组和其具体权限，如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//身体传感器</span></div><div class="line">group:android.permission-group.SENSORS</div><div class="line">  permission:android.permission.BODY_SENSORS</div><div class="line"><span class="comment">//日历</span></div><div class="line">group:android.permission-group.CALENDAR</div><div class="line">  permission:android.permission.READ_CALENDAR</div><div class="line">  permission:android.permission.WRITE_CALENDAR</div><div class="line"><span class="comment">//摄像头</span></div><div class="line">group:android.permission-group.CAMERA</div><div class="line">  permission:android.permission.CAMERA</div><div class="line"><span class="comment">//通讯录</span></div><div class="line">group:android.permission-group.CONTACTS</div><div class="line">  permission:android.permission.WRITE_CONTACTS</div><div class="line">  permission:android.permission.GET_ACCOUNTS</div><div class="line">  permission:android.permission.READ_CONTACTS</div><div class="line"><span class="comment">//地理位置</span></div><div class="line">group:android.permission-group.LOCATION</div><div class="line">  permission:android.permission.ACCESS_FINE_LOCATION</div><div class="line">  permission:android.permission.ACCESS_COARSE_LOCATION</div><div class="line"><span class="comment">//麦克风</span></div><div class="line">group:android.permission-group.MICROPHONE</div><div class="line">  permission:android.permission.RECORD_AUDIO</div><div class="line"><span class="comment">//电话</span></div><div class="line">group:android.permission-group.PHONE</div><div class="line">  permission:android.permission.READ_CALL_LOG</div><div class="line">  permission:android.permission.READ_PHONE_STATE</div><div class="line">  permission:android.permission.CALL_PHONE</div><div class="line">  permission:android.permission.WRITE_CALL_LOG</div><div class="line">  permission:android.permission.USE_SIP</div><div class="line">  permission:android.permission.PROCESS_OUTGOING_CALLS</div><div class="line">  permission:com.android.voicemail.permission.ADD_VOICEMAIL</div><div class="line"><span class="comment">//短信</span></div><div class="line">group:android.permission-group.SMS</div><div class="line">  permission:android.permission.READ_SMS</div><div class="line">  permission:android.permission.RECEIVE_WAP_PUSH</div><div class="line">  permission:android.permission.RECEIVE_MMS</div><div class="line">  permission:android.permission.RECEIVE_SMS</div><div class="line">  permission:android.permission.SEND_SMS</div><div class="line">  permission:android.permission.READ_CELL_BROADCASTS</div><div class="line"><span class="comment">//存储空间</span></div><div class="line">group:android.permission-group.STORAGE</div><div class="line">  permission:android.permission.READ_EXTERNAL_STORAGE</div><div class="line">  permission:android.permission.WRITE_EXTERNAL_STORAGE</div></pre></td></tr></table></figure></p>
+<hr>
+<p>后续补上具体操作和代码。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://haodadaa.github.io/2017/05/19/Android-6.0运行时权限/" data-id="cj2w56ujs0000ps73qa9rlkwt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://haodadaa.github.io/2017/05/19/Android-6.0运行时权限/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://haodadaa.github.io/2017/05/19/Android-6.0运行时权限/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/20/Gradle项目依赖统一管理/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Gradle项目依赖统一管理
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/09/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Hello World</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/05/20/RxJava操作符简介/" class="title">RxJava2.0 操作符简介</a></p>
+                            <p class="item-date"><time datetime="2017-05-19T17:51:02.622Z" itemprop="datePublished">2017-05-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/05/20/Gradle项目依赖统一管理/" class="title">Gradle项目依赖统一管理</a></p>
+                            <p class="item-date"><time datetime="2017-05-19T17:51:02.619Z" itemprop="datePublished">2017-05-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/05/19/Android-6.0运行时权限/" class="title">Android 6.0运行时权限</a></p>
+                            <p class="item-date"><time datetime="2017-05-19T07:44:18.000Z" itemprop="datePublished">2017-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/09/02/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2016-09-02T07:02:46.800Z" itemprop="datePublished">2016-09-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Haodada<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://haodadaa.github.io/2017/05/19/Android-6.0运行时权限/';
+        
+        this.page.identifier = 'Android-6.0运行时权限';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
