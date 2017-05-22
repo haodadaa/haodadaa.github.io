@@ -3,14 +3,45 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Hexo</title>
+    <title>RxJava2.0 操作符简介 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://haodadaa.github.io/index.html">
+    <meta name="description" content="just操作符
+
+just()，直接创建一个Observable并自动调用onNext()发射数据
+1Observable&amp;lt;String&amp;gt; observable = Observable.just(&quot;Hello World&quot;);
+
+
+fromIterable操作符
+
+fromIterable()，遍历集合，然后发射每一个item，相当于多次调用onNext()，每次传一个item
+1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RxJava2.0 操作符简介">
+<meta property="og:url" content="http://haodadaa.github.io/2017/05/18/RxJava操作符简介/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="just操作符
+
+just()，直接创建一个Observable并自动调用onNext()发射数据
+1Observable&amp;lt;String&amp;gt; observable = Observable.just(&quot;Hello World&quot;);
+
+
+fromIterable操作符
+
+fromIterable()，遍历集合，然后发射每一个item，相当于多次调用onNext()，每次传一个item
+1">
+<meta property="og:updated_time" content="2017-05-22T13:45:05.074Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="RxJava2.0 操作符简介">
+<meta name="twitter:description" content="just操作符
+
+just()，直接创建一个Observable并自动调用onNext()发射数据
+1Observable&amp;lt;String&amp;gt; observable = Observable.just(&quot;Hello World&quot;);
+
+
+fromIterable操作符
+
+fromIterable()，遍历集合，然后发射每一个item，相当于多次调用onNext()，每次传一个item
+1">
     
 
     
@@ -175,8 +206,7 @@
 </aside>
 
             
-            <section id="main">
-    <article id="post-Android-6.0运行时权限" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-RxJava操作符简介" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -184,126 +214,8 @@
             <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/19/Android-6.0运行时权限/">Android 6.0运行时权限</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/19/Android-6.0运行时权限/">
-            <time datetime="2017-05-19T07:44:18.000Z" itemprop="datePublished">2017-05-19</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/运行时权限/">运行时权限</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Android6.0的发布也证明了Google开始在安全和权限的控制，以及给用户更人性化的方式去使用Android系统。6.0带来了一个主要的新特性：运行时权限。<br><br>在以前的版本，我们只需要在mainfest文件中声明所需要的权限，及可获得整个应用程序使用过程中的权限，这些权限在我们安装应用程序时会列出。<br><br>而运行时权限则是当我们需要使用某个敏感权限时，弹出一个对话框，让用户去选择是否同意授权，这样一定程度上保护了用户的隐私安全，这个处理权完全在用户手上。</p></p>
-            <p class="article-more-link">
-                <a href="/2017/05/19/Android-6.0运行时权限/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
-    
-        <a href="http://haodadaa.github.io/2017/05/19/Android-6.0运行时权限/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://haodadaa.github.io/2017/05/19/Android-6.0运行时权限/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-RxJava操作符简介" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/18/RxJava操作符简介/">RxJava2.0 操作符简介</a>
+        <h1 class="article-title" itemprop="name">
+            RxJava2.0 操作符简介
         </h1>
     
 
@@ -336,7 +248,8 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><ul>
+            
+            <ul>
 <li>just操作符</li>
 </ul>
 <p>just()，直接创建一个Observable并自动调用onNext()发射数据</p>
@@ -346,10 +259,62 @@
 <li>fromIterable操作符</li>
 </ul>
 <p>fromIterable()，遍历集合，然后发射每一个item，相当于多次调用onNext()，每次传一个item</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">    list.add(i + <span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">Observable&lt;String&gt; observable = Observable.fromIterable((Iterable&lt;String&gt;) list);</div></pre></td></tr></table></figure></p>
-            <p class="article-more-link">
-                <a href="/2017/05/18/RxJava操作符简介/#more">查看更多</a>
-            </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">    list.add(i + <span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">Observable&lt;String&gt; observable = Observable.fromIterable((Iterable&lt;String&gt;) list);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<ul>
+<li>defer操作符</li>
+</ul>
+<p>defer()，当观察者订阅时，才创建Observable，并且针对每个观察者创建都是一个新的Observable。以何种方式创建这个Observable对象，当满足回调条件后，就会进行相应的回调。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Observable&lt;String&gt; observable = Observable.defer(<span class="keyword">new</span> Callable&lt;ObservableSource&lt;? extends String&gt;&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> ObservableSource&lt;? extends String&gt; call() <span class="keyword">throws</span> Exception &#123;</div><div class="line">         <span class="keyword">return</span> Observable.just(<span class="string">"hello"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>interval操作符</li>
+</ul>
+<p>interval()，创建一个按固定时间间隔发射整数序列的Observable，即按照固定秒数一次调用onNext(),可用作定时器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Long&gt; observable = Observable.interval(<span class="number">1</span>, TimeUnit.SECONDS);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>range操作符</li>
+</ul>
+<p>range()，创建一个发射整数序列的Observable，第一个参数为起始值，第二个参数为发送个数，0则不发送，负数则抛出异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Integer&gt; observable = Observable.range(<span class="number">1</span>, <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>timer操作符</li>
+</ul>
+<p>timer()，给定一个延迟时间间隔发射数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Long&gt; observable = Observable.timer(<span class="number">2</span>,TimeUnit.SECONDS);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>repeat操作符</li>
+</ul>
+<p>repeat()，重复调用一个Observable事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;String&gt; observable = Observable.just(<span class="string">"1"</span>).repeat();</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>map操作符</li>
+</ul>
+<p>map()，把原来的Observable对象转换为另一个Observable对象，对传输的数据进行灵活操作，获取想要的数据形式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Integer&gt; observable = Observable.just(<span class="string">"hello"</span>).map(<span class="keyword">new</span> Function&lt;String, Integer&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">apply</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">           <span class="keyword">return</span> s.length();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>flatMap操作符</li>
+</ul>
+<hr>
+<ul>
+<li>filter操作符</li>
+</ul>
+<hr>
+<ul>
+<li>take操作符</li>
+</ul>
+<hr>
+<ul>
+<li>doOnNext操作符</li>
+</ul>
+<hr>
+
         
         </div>
         <footer class="article-footer">
@@ -418,234 +383,41 @@
         </footer>
     </div>
     
-</article>
-
-
-
-    <article id="post-Gradle项目依赖统一管理" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
         
-        
-        
-            <header class="article-header">
-                
+<nav id="article-nav">
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/20/Gradle项目依赖统一管理/">Gradle项目依赖统一管理</a>
-        </h1>
-    
-
+        <a href="/2017/05/19/Android-6.0运行时权限/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
                 
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/20/Gradle项目依赖统一管理/">
-            <time datetime="2017-03-20T08:30:18.000Z" itemprop="datePublished">2017-03-20</time>
+                    Android 6.0运行时权限
+                
+            </div>
         </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　通常情况下，我们只有一application module时，只需要配置一个project级的build.gradle和一个module级的build.gradle。<br><br>　　当我们一个项目下有多个module并且依赖也比较复杂时，如果这时需要修改某个开源库的版本依赖，则需要找到每个引用依赖的地方进行修改。<br><br>　　如果我们自定义一个配置文件统一的管理这些依赖，不仅方便我们修改还减少错误率。</p></p>
-            <p class="article-more-link">
-                <a href="/2017/03/20/Gradle项目依赖统一管理/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
     
-        <a href="http://haodadaa.github.io/2017/03/20/Gradle项目依赖统一管理/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://haodadaa.github.io/2017/03/20/Gradle项目依赖统一管理/">评论</a>
     
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/08/08/hello-world/">Hello World</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/08/08/hello-world/">
-            <time datetime="2016-08-08T08:25:17.000Z" itemprop="datePublished">2016-08-08</time>
+        <a href="/2017/03/20/Gradle项目依赖统一管理/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Gradle项目依赖统一管理</div>
         </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/建站/">建站</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p></p>
-            <p class="article-more-link">
-                <a href="/2016/08/08/hello-world/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
     
-        <a href="http://haodadaa.github.io/2016/08/08/hello-world/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://haodadaa.github.io/2016/08/08/hello-world/">评论</a>
-    
+</nav>
 
-        </footer>
-    </div>
+
     
 </article>
 
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
 
 </section>
             
@@ -771,11 +543,13 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'http://haodadaa.github.io/2017/05/18/RxJava操作符简介/';
+        
+        this.page.identifier = 'RxJava操作符简介';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();

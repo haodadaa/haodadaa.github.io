@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://haodadaa.github.io/"/>
-  <updated>2017-05-19T18:42:29.857Z</updated>
+  <updated>2017-05-22T13:41:28.611Z</updated>
   <id>http://haodadaa.github.io/</id>
   
   <author>
@@ -16,132 +16,19 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>RxJava2.0 操作符简介</title>
-    <link href="http://haodadaa.github.io/2017/05/20/RxJava%E6%93%8D%E4%BD%9C%E7%AC%A6%E7%AE%80%E4%BB%8B/"/>
-    <id>http://haodadaa.github.io/2017/05/20/RxJava操作符简介/</id>
-    <published>2017-05-19T17:51:02.622Z</published>
-    <updated>2017-05-19T18:42:29.857Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="just操作符"><a href="#just操作符" class="headerlink" title="just操作符"></a>just操作符</h3><p>just()，直接创建一个Observable并自动调用onNext()发射数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;String&gt; observable = Observable.just(<span class="string">"Hello World"</span>);</div></pre></td></tr></table></figure>
-<ul>
-<li></li>
-</ul>
-<h3 id="fromIterable操作符"><a href="#fromIterable操作符" class="headerlink" title="fromIterable操作符"></a>fromIterable操作符</h3><p>fromIterable()，遍历集合，然后发射每一个item，相当于多次调用onNext()，每次传一个item</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">    list.add(i + <span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">Observable&lt;String&gt; observable = Observable.fromIterable((Iterable&lt;String&gt;) list);</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li></li>
-</ul>
-<h3 id="defer操作符"><a href="#defer操作符" class="headerlink" title="defer操作符"></a>defer操作符</h3><p>defer()，当观察者订阅时，才创建Observable，并且针对每个观察者创建都是一个新的Observable。以何种方式创建这个Observable对象，当满足回调条件后，就会进行相应的回调。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Observable&lt;String&gt; observable = Observable.defer(<span class="keyword">new</span> Callable&lt;ObservableSource&lt;? extends String&gt;&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> ObservableSource&lt;? extends String&gt; call() <span class="keyword">throws</span> Exception &#123;</div><div class="line">         <span class="keyword">return</span> Observable.just(<span class="string">"hello"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ul>
-<li></li>
-</ul>
-<h3 id="interval操作符"><a href="#interval操作符" class="headerlink" title="interval操作符"></a>interval操作符</h3><p>interval()，创建一个按固定时间间隔发射整数序列的Observable，即按照固定秒数一次调用onNext(),可用作定时器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Long&gt; observable = Observable.interval(<span class="number">1</span>, TimeUnit.SECONDS);</div></pre></td></tr></table></figure>
-<ul>
-<li></li>
-</ul>
-<h3 id="range操作符"><a href="#range操作符" class="headerlink" title="range操作符"></a>range操作符</h3><p>range()，创建一个发射整数序列的Observable，第一个参数为起始值，第二个参数为发送个数，0则不发送，负数则抛出异常。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Integer&gt; observable = Observable.range(<span class="number">1</span>, <span class="number">10</span>);</div></pre></td></tr></table></figure>
-<ul>
-<li></li>
-</ul>
-<h3 id="timer操作符"><a href="#timer操作符" class="headerlink" title="timer操作符"></a>timer操作符</h3><p>timer()，给定一个延迟时间间隔发射数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Long&gt; observable = Observable.timer(<span class="number">2</span>,TimeUnit.SECONDS);</div></pre></td></tr></table></figure>
-<ul>
-<li></li>
-</ul>
-<h3 id="repeat操作符"><a href="#repeat操作符" class="headerlink" title="repeat操作符"></a>repeat操作符</h3><p>repeat()，重复调用一个Observable事件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;String&gt; observable = Observable.just(<span class="string">"1"</span>).repeat();</div></pre></td></tr></table></figure>
-<ul>
-<li></li>
-</ul>
-<h3 id="map操作符"><a href="#map操作符" class="headerlink" title="map操作符"></a>map操作符</h3><p>map()，把原来的Observable对象转换为另一个Observable对象，对传输的数据进行灵活操作，获取想要的数据形式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Integer&gt; observable = Observable.just(<span class="string">"hello"</span>).map(<span class="keyword">new</span> Function&lt;String, Integer&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">apply</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">           <span class="keyword">return</span> s.length();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ul>
-<li></li>
-</ul>
-<h3 id="flatMap操作符"><a href="#flatMap操作符" class="headerlink" title="flatMap操作符"></a>flatMap操作符</h3><ul>
-<li></li>
-</ul>
-<h3 id="filter操作符"><a href="#filter操作符" class="headerlink" title="filter操作符"></a>filter操作符</h3><ul>
-<li></li>
-</ul>
-<h3 id="take操作符"><a href="#take操作符" class="headerlink" title="take操作符"></a>take操作符</h3><ul>
-<li></li>
-</ul>
-<h3 id="doOnNext操作符"><a href="#doOnNext操作符" class="headerlink" title="doOnNext操作符"></a>doOnNext操作符</h3><ul>
-<li></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;just操作符&quot;&gt;&lt;a href=&quot;#just操作符&quot; class=&quot;headerlink&quot; title=&quot;just操作符&quot;&gt;&lt;/a&gt;just操作符&lt;/h3&gt;&lt;p&gt;just()，直接创建一个Observable并自动调用onNext()发射数据&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Observable&amp;lt;String&amp;gt; observable = Observable.just(&lt;span class=&quot;string&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;fromIterable操作符&quot;&gt;&lt;a href=&quot;#fromIterable操作符&quot; class=&quot;headerlink&quot; title=&quot;fromIterable操作符&quot;&gt;&lt;/a&gt;fromIterable操作符&lt;/h3&gt;&lt;p&gt;fromIterable()，遍历集合，然后发射每一个item，相当于多次调用onNext()，每次传一个item&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;List&amp;lt;String&amp;gt; list = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;; i++) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    list.add(i + &lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Observable&amp;lt;String&amp;gt; observable = Observable.fromIterable((Iterable&amp;lt;String&amp;gt;) list);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Gradle项目依赖统一管理</title>
-    <link href="http://haodadaa.github.io/2017/05/20/Gradle%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86/"/>
-    <id>http://haodadaa.github.io/2017/05/20/Gradle项目依赖统一管理/</id>
-    <published>2017-05-19T17:51:02.619Z</published>
-    <updated>2017-05-19T18:38:48.699Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>　　通常情况下，我们只有一application module时，只需要配置一个project级的build.gradle和一个module级的build.gradle。<br><br>　　当我们一个项目下有多个module并且依赖也比较复杂时，如果这时需要修改某个开源库的版本依赖，则需要找到每个引用依赖的地方进行修改。<br><br>　　如果我们自定义一个配置文件统一的管理这些依赖，不仅方便我们修改还减少错误率。</p>
-<a id="more"></a>
-<hr>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>　　在root目录声明全局变量，在project级build.gradle中apply from引用进来，使用rootProject.ext引用具体的库依赖</p>
-<hr>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul>
-<li><p>在项目的根文件夹下新建一个config.gradle（名字可以自己定义)声明全局变量，内容如下(请根据自己库和版本进行修改)：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">def supportVersion = <span class="string">"25.0.1"</span></div><div class="line">def retrofitVersion = <span class="string">"2.0.2"</span></div><div class="line">def butterKnifeVersion = <span class="string">"8.1.0"</span></div><div class="line"></div><div class="line">project.ext &#123;</div><div class="line">    android = [</div><div class="line">            compileSdkVersion: <span class="number">25</span>,</div><div class="line">            buildToolsVersion: <span class="string">"25.0.1"</span>,</div><div class="line">            applicationId    : <span class="string">"com.hao.mybaselib"</span>,</div><div class="line">            minSdkVersion    : <span class="number">16</span>,</div><div class="line">            targetSdkVersion : <span class="number">25</span>,</div><div class="line">            versionCode      : <span class="number">1</span>,</div><div class="line">            versionName      : <span class="string">"1.0"</span>,</div><div class="line">            javaVersion      : JavaVersion.VERSION_1_8</div><div class="line">    ]</div><div class="line"></div><div class="line">    dependencies = [</div><div class="line">            <span class="comment">//android-support</span></div><div class="line">            <span class="string">"support-v4"</span>   : <span class="string">"com.android.support:support-v4:$&#123;supportVersion&#125;"</span>,</div><div class="line">            <span class="string">"appcompat-v7"</span> : <span class="string">"com.android.support:appcompat-v7:$&#123;supportVersion&#125;"</span>,</div><div class="line">            <span class="string">"design"</span>       : <span class="string">"com.android.support:design:$&#123;supportVersion&#125;"</span>,</div><div class="line">            <span class="string">"recyclerview"</span> : <span class="string">"com.android.support:recyclerview-v7:$&#123;supportVersion&#125;"</span>,</div><div class="line">            <span class="string">"cardview"</span>     : <span class="string">"com.android.support:cardview-v7:$&#123;supportVersion&#125;"</span>,</div><div class="line"></div><div class="line">            <span class="comment">//rx</span></div><div class="line">            <span class="string">"rxjava"</span>       : <span class="string">"io.reactivex:rxjava:1.1.6"</span>,</div><div class="line">            <span class="string">"rxandroid"</span>    : <span class="string">"io.reactivex:rxandroid:1.2.1"</span>,</div><div class="line"></div><div class="line">            <span class="comment">//retrofit</span></div><div class="line">            <span class="string">"retrofit"</span>      : <span class="string">"com.squareup.retrofit2:retrofit:$&#123;retrofitVersion&#125;"</span>,</div><div class="line">            <span class="string">"adapter-rxjava"</span>: <span class="string">"com.squareup.retrofit2:adapter-rxjava:$&#123;retrofitVersion&#125;"</span>,</div><div class="line"></div><div class="line">            <span class="comment">//others</span></div><div class="line">            <span class="string">"okhttp3-logging-interceptor"</span>: <span class="string">"com.squareup.okhttp3:logging-interceptor:3.1.2"</span>,</div><div class="line">            <span class="string">"butterknife"</span>                : <span class="string">"com.jakewharton:butterknife:$&#123;butterKnifeVersion&#125;"</span>,</div><div class="line">            <span class="string">"butterknife-compiler"</span>       : <span class="string">"com.jakewharton:butterknife-compiler:$&#123;butterKnifeVersion&#125;"</span>,</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在项目级的build.gradle添加apply from引用</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply from: <span class="string">"config.gradle"</span></div></pre></td></tr></table></figure>
-<ul>
-<li>在module级的build.gradle中使用如下：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.library'</span></div><div class="line">apply plugin: <span class="string">'com.neenbedankt.android-apt'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion rootProject.ext.android.compileSdkVersion</div><div class="line">    buildToolsVersion rootProject.ext.android.buildToolsVersion</div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line"><span class="comment">//        applicationId "com.hao.mybaselib"</span></div><div class="line">        minSdkVersion rootProject.ext.android.minSdkVersion</div><div class="line">        targetSdkVersion rootProject.ext.android.targetSdkVersion</div><div class="line">        versionCode rootProject.ext.android.versionCode</div><div class="line">        versionName rootProject.ext.android.versionName</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            <span class="function">minifyEnabled <span class="keyword">false</span></span></div><div class="line">            proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android.txt'</span>)</span>, 'proguard-rules.pro'</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(include: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)</span></span></div><div class="line">    testCompile 'junit:junit:4.12'</div><div class="line">    compile rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"appcompat-v7"</span>)</span></div><div class="line">    compile rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"recyclerview"</span>)</span></div><div class="line">    <span class="comment">//ButterKnife</span></div><div class="line">    compile rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"butterknife"</span>)</span></div><div class="line">    apt rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"butterknife-compiler"</span>)</span></div><div class="line">    <span class="comment">//rx</span></div><div class="line">    compile rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"rxjava"</span>)</span></div><div class="line">    compile rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"rxandroid"</span>)</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>　　之后若需要修改版本或配置，只需要在config.gradle中做修改。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;　　通常情况下，我们只有一application module时，只需要配置一个project级的build.gradle和一个module级的build.gradle。&lt;br&gt;&lt;br&gt;　　当我们一个项目下有多个module并且依赖也比较复杂时，如果这时需要修改某个开源库的版本依赖，则需要找到每个引用依赖的地方进行修改。&lt;br&gt;&lt;br&gt;　　如果我们自定义一个配置文件统一的管理这些依赖，不仅方便我们修改还减少错误率。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Android 6.0运行时权限</title>
     <link href="http://haodadaa.github.io/2017/05/19/Android-6.0%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/"/>
     <id>http://haodadaa.github.io/2017/05/19/Android-6.0运行时权限/</id>
     <published>2017-05-19T07:44:18.000Z</published>
-    <updated>2017-05-19T18:38:41.126Z</updated>
+    <updated>2017-05-22T13:41:28.611Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android6.0的发布也证明了Google开始在安全和权限的控制，以及给用户更人性化的方式去使用Android系统。6.0带来了一个主要的新特性：运行时权限。<br><br>在以前的版本，我们只需要在mainfest文件中声明所需要的权限，及可获得整个应用程序使用过程中的权限，这些权限在我们安装应用程序时会列出。<br><br>而运行时权限则是当我们需要使用某个敏感权限时，弹出一个对话框，让用户去选择是否同意授权，这样一定程度上保护了用户的隐私安全，这个处理权完全在用户手上。</p>
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Android6.0的发布也证明了Google开始在安全和权限的控制，以及给用户更人性化的方式去使用Android系统。6.0带来了一个主要的新特性：运行时权限。<br><br>在以前的版本，我们只需要在mainfest文件中声明所需要的权限，及可获得整个应用程序使用过程中的权限，这些权限在我们安装应用程序时会列出。<br><br>而运行时权限则是当我们需要使用某个敏感权限时，弹出一个对话框，让用户去选择是否同意授权，这样一定程度上保护了用户的隐私安全，这个处理权完全在用户手上。</p>
 <a id="more"></a>
 <hr>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>并非所有的权限都是需要用户同意的，不然用户需要授权的权限太多也影响了用户体验，而且并非所有的权限都是敏感权限。因此Android6.0对权限进行了分类，分类如下：</p>
-<h5 id="Normal-Permissions-正常权限"><a href="#Normal-Permissions-正常权限" class="headerlink" title="Normal Permissions 正常权限"></a>Normal Permissions 正常权限</h5><p>不涉及用户隐私，不会带来用户安全问题；安装时就授权，不会在提示用户授权。这类权限应用程序需要时，只需在mainfest文件中声明。主要包括：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">android.permission.ACCESS_LOCATION_EXTRA_COMMANDS</div><div class="line">android.permission.ACCESS_NETWORK_STATE</div><div class="line">android.permission.ACCESS_NOTIFICATION_POLICY</div><div class="line">android.permission.ACCESS_WIFI_STATE</div><div class="line">android.permission.ACCESS_WIMAX_STATE</div><div class="line">android.permission.BLUETOOTH</div><div class="line">android.permission.BLUETOOTH_ADMIN</div><div class="line">android.permission.BROADCAST_STICKY</div><div class="line">android.permission.CHANGE_NETWORK_STATE</div><div class="line">android.permission.CHANGE_WIFI_MULTICAST_STATE</div><div class="line">android.permission.CHANGE_WIFI_STATE</div><div class="line">android.permission.CHANGE_WIMAX_STATE</div><div class="line">android.permission.DISABLE_KEYGUARD</div><div class="line">android.permission.EXPAND_STATUS_BAR</div><div class="line">android.permission.FLASHLIGHT</div><div class="line">android.permission.GET_ACCOUNTS</div><div class="line">android.permission.GET_PACKAGE_SIZE</div><div class="line">android.permission.INTERNET</div><div class="line">android.permission.KILL_BACKGROUND_PROCESSES</div><div class="line">android.permission.MODIFY_AUDIO_SETTINGS</div><div class="line">android.permission.NFC</div><div class="line">android.permission.READ_SYNC_SETTINGS</div><div class="line">android.permission.READ_SYNC_STATS</div><div class="line">android.permission.RECEIVE_BOOT_COMPLETED</div><div class="line">android.permission.REORDER_TASKS</div><div class="line">android.permission.REQUEST_INSTALL_PACKAGES</div><div class="line">android.permission.SET_TIME_ZONE</div><div class="line">android.permission.SET_WALLPAPER</div><div class="line">android.permission.SET_WALLPAPER_HINTS</div><div class="line">android.permission.SUBSCRIBED_FEEDS_READ</div><div class="line">android.permission.TRANSMIT_IR</div><div class="line">android.permission.USE_FINGERPRINT</div><div class="line">android.permission.VIBRATE</div><div class="line">android.permission.WAKE_LOCK</div><div class="line">android.permission.WRITE_SYNC_SETTINGS</div><div class="line">com.android.alarm.permission.SET_ALARM</div><div class="line">com.android.launcher.permission.INSTALL_SHORTCUT</div><div class="line">com.android.launcher.permission.UNINSTALL_SHORTCUT</div></pre></td></tr></table></figure></p>
-<h5 id="Particular-Permissions特殊权限"><a href="#Particular-Permissions特殊权限" class="headerlink" title="Particular Permissions特殊权限"></a>Particular Permissions特殊权限</h5><p>特殊权限有两个：<br>SYSTEM_ALERT_WINDOW，设置悬浮窗，进行一些黑科技<br>WRITE_SETTINGS 修改系统设置<br><br>这两个特殊权限需要通过Intent隐式启动的方式来授权，通过startActivityForResult来完成授权和获取授权结果。</p>
-<h5 id="Dangerous-Permissions-危险权限"><a href="#Dangerous-Permissions-危险权限" class="headerlink" title="Dangerous Permissions 危险权限"></a>Dangerous Permissions 危险权限</h5><p>危险权限即我们本文主要要说明的运行时权限，以下权限需要在运行时判断：</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>并非所有的权限都是需要用户同意的，不然用户需要授权的权限太多也影响了用户体验，而且并非所有的权限都是敏感权限。因此Android6.0对权限进行了分类，分类如下：</p>
+<h4 id="Normal-Permissions-正常权限"><a href="#Normal-Permissions-正常权限" class="headerlink" title="Normal Permissions 正常权限"></a>Normal Permissions 正常权限</h4><p>不涉及用户隐私，不会带来用户安全问题；安装时就授权，不会在提示用户授权。这类权限应用程序需要时，只需在mainfest文件中声明。主要包括：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">android.permission.ACCESS_LOCATION_EXTRA_COMMANDS</div><div class="line">android.permission.ACCESS_NETWORK_STATE</div><div class="line">android.permission.ACCESS_NOTIFICATION_POLICY</div><div class="line">android.permission.ACCESS_WIFI_STATE</div><div class="line">android.permission.ACCESS_WIMAX_STATE</div><div class="line">android.permission.BLUETOOTH</div><div class="line">android.permission.BLUETOOTH_ADMIN</div><div class="line">android.permission.BROADCAST_STICKY</div><div class="line">android.permission.CHANGE_NETWORK_STATE</div><div class="line">android.permission.CHANGE_WIFI_MULTICAST_STATE</div><div class="line">android.permission.CHANGE_WIFI_STATE</div><div class="line">android.permission.CHANGE_WIMAX_STATE</div><div class="line">android.permission.DISABLE_KEYGUARD</div><div class="line">android.permission.EXPAND_STATUS_BAR</div><div class="line">android.permission.FLASHLIGHT</div><div class="line">android.permission.GET_ACCOUNTS</div><div class="line">android.permission.GET_PACKAGE_SIZE</div><div class="line">android.permission.INTERNET</div><div class="line">android.permission.KILL_BACKGROUND_PROCESSES</div><div class="line">android.permission.MODIFY_AUDIO_SETTINGS</div><div class="line">android.permission.NFC</div><div class="line">android.permission.READ_SYNC_SETTINGS</div><div class="line">android.permission.READ_SYNC_STATS</div><div class="line">android.permission.RECEIVE_BOOT_COMPLETED</div><div class="line">android.permission.REORDER_TASKS</div><div class="line">android.permission.REQUEST_INSTALL_PACKAGES</div><div class="line">android.permission.SET_TIME_ZONE</div><div class="line">android.permission.SET_WALLPAPER</div><div class="line">android.permission.SET_WALLPAPER_HINTS</div><div class="line">android.permission.SUBSCRIBED_FEEDS_READ</div><div class="line">android.permission.TRANSMIT_IR</div><div class="line">android.permission.USE_FINGERPRINT</div><div class="line">android.permission.VIBRATE</div><div class="line">android.permission.WAKE_LOCK</div><div class="line">android.permission.WRITE_SYNC_SETTINGS</div><div class="line">com.android.alarm.permission.SET_ALARM</div><div class="line">com.android.launcher.permission.INSTALL_SHORTCUT</div><div class="line">com.android.launcher.permission.UNINSTALL_SHORTCUT</div></pre></td></tr></table></figure></p>
+<h4 id="Particular-Permissions特殊权限"><a href="#Particular-Permissions特殊权限" class="headerlink" title="Particular Permissions特殊权限"></a>Particular Permissions特殊权限</h4><p>特殊权限有两个：<br>SYSTEM_ALERT_WINDOW，设置悬浮窗，进行一些黑科技<br>WRITE_SETTINGS 修改系统设置<br><br>这两个特殊权限需要通过Intent隐式启动的方式来授权，通过startActivityForResult来完成授权和获取授权结果。</p>
+<h4 id="Dangerous-Permissions-危险权限"><a href="#Dangerous-Permissions-危险权限" class="headerlink" title="Dangerous Permissions 危险权限"></a>Dangerous Permissions 危险权限</h4><p>危险权限即我们本文主要要说明的运行时权限，以下权限需要在运行时判断：</p>
 <ul>
 <li><p>身体传感器BodySensor</p>
 </li>
@@ -164,24 +51,170 @@
 </ul>
 <p>权限分组和其具体权限，如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//身体传感器</span></div><div class="line">group:android.permission-group.SENSORS</div><div class="line">  permission:android.permission.BODY_SENSORS</div><div class="line"><span class="comment">//日历</span></div><div class="line">group:android.permission-group.CALENDAR</div><div class="line">  permission:android.permission.READ_CALENDAR</div><div class="line">  permission:android.permission.WRITE_CALENDAR</div><div class="line"><span class="comment">//摄像头</span></div><div class="line">group:android.permission-group.CAMERA</div><div class="line">  permission:android.permission.CAMERA</div><div class="line"><span class="comment">//通讯录</span></div><div class="line">group:android.permission-group.CONTACTS</div><div class="line">  permission:android.permission.WRITE_CONTACTS</div><div class="line">  permission:android.permission.GET_ACCOUNTS</div><div class="line">  permission:android.permission.READ_CONTACTS</div><div class="line"><span class="comment">//地理位置</span></div><div class="line">group:android.permission-group.LOCATION</div><div class="line">  permission:android.permission.ACCESS_FINE_LOCATION</div><div class="line">  permission:android.permission.ACCESS_COARSE_LOCATION</div><div class="line"><span class="comment">//麦克风</span></div><div class="line">group:android.permission-group.MICROPHONE</div><div class="line">  permission:android.permission.RECORD_AUDIO</div><div class="line"><span class="comment">//电话</span></div><div class="line">group:android.permission-group.PHONE</div><div class="line">  permission:android.permission.READ_CALL_LOG</div><div class="line">  permission:android.permission.READ_PHONE_STATE</div><div class="line">  permission:android.permission.CALL_PHONE</div><div class="line">  permission:android.permission.WRITE_CALL_LOG</div><div class="line">  permission:android.permission.USE_SIP</div><div class="line">  permission:android.permission.PROCESS_OUTGOING_CALLS</div><div class="line">  permission:com.android.voicemail.permission.ADD_VOICEMAIL</div><div class="line"><span class="comment">//短信</span></div><div class="line">group:android.permission-group.SMS</div><div class="line">  permission:android.permission.READ_SMS</div><div class="line">  permission:android.permission.RECEIVE_WAP_PUSH</div><div class="line">  permission:android.permission.RECEIVE_MMS</div><div class="line">  permission:android.permission.RECEIVE_SMS</div><div class="line">  permission:android.permission.SEND_SMS</div><div class="line">  permission:android.permission.READ_CELL_BROADCASTS</div><div class="line"><span class="comment">//存储空间</span></div><div class="line">group:android.permission-group.STORAGE</div><div class="line">  permission:android.permission.READ_EXTERNAL_STORAGE</div><div class="line">  permission:android.permission.WRITE_EXTERNAL_STORAGE</div></pre></td></tr></table></figure></p>
 <hr>
-<p>后续补上具体操作和代码。</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>Android 6.0提供了如下API为我们完成授予运行时权限：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">checkSelfPermission</span><span class="params">(String permission)</span></span></div><div class="line"><span class="keyword">void</span> <span class="title">requestPermissions</span><span class="params">(String[] permissions, <span class="keyword">int</span> requestCode)</span></div><div class="line"><span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode,String permissions[], <span class="keyword">int</span>[] grantResults)</span></div></pre></td></tr></table></figure></p>
+<p>上述的前两个方法需要API 23或以上才能支持，所以我们也可以使用Support Library v4中提供的方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> ContextCompat.checkSelfPermission(Context context,String permission)</div><div class="line"><span class="keyword">void</span> ActivityCompat.requestPermissions(Activity activity,String[] permissions,<span class="keyword">int</span> requestCode)</div></pre></td></tr></table></figure></p>
+<p>通过上述方法，我们就可以完成一个简单的运行时权限的处理。当用户触发要授权的操作时，先检查权限是否以授予，再请求权限，在权限授予结果回调中做我们自己的处理，代码如下：<br>MainActivity.java ：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PERMISSIONS_REQUEST_AUDIO = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span> (ContextCompat.checkSelfPermission(<span class="keyword">this</span>,</div><div class="line">                Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">            requsetPermission();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">requsetPermission</span><span class="params">()</span></span>&#123;</div><div class="line">        ActivityCompat.requestPermissions(<span class="keyword">this</span>,</div><div class="line">                <span class="keyword">new</span> String[]&#123;Manifest.permission.MODIFY_AUDIO_SETTINGS,</div><div class="line">                        Manifest.permission.RECORD_AUDIO&#125;,</div><div class="line">                PERMISSIONS_REQUEST_AUDIO);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, @NonNull String[] permissions, @NonNull <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">            <span class="keyword">case</span> PERMISSIONS_REQUEST_AUDIO: &#123;</div><div class="line">                <span class="comment">// If request is cancelled, the result arrays are empty.</span></div><div class="line">                <span class="keyword">if</span> (grantResults.length &gt;= <span class="number">2</span></div><div class="line">                        &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED</div><div class="line">                        &amp;&amp; grantResults[<span class="number">1</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">                    Toast.makeText(<span class="keyword">this</span>,<span class="string">"用户授权成功"</span>,Toast.LENGTH_SHORT).show();</div><div class="line">                    <span class="comment">//在这里做授权成功之后的处理</span></div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="comment">//                    Log.e(LOG_TAG, "Permission is not granted:" + grantResults[0] + grantResults[1]);</span></div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">default</span>: &#123;</div><div class="line">                <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在实际应用中，我们还需要注意，6.0提供了一个应用权限管理界面，用户有可能会自己去关闭应用授权，有可能导致程序奔溃，因此当检测到权限被拒接时，给予用户良好的提示，引导用户开启必需的权限，这样的提示同样也是在第一次授权时需要给予用户提醒的。<br>即使支持运行时权限，我们也需要在Mainfest文件中声明。</p>
+<h4 id="两个影响较大的权限"><a href="#两个影响较大的权限" class="headerlink" title="两个影响较大的权限"></a>两个影响较大的权限</h4><p>运行时权限对于应用影响比较大的权限有两个，他们分别是<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">READ_PHONE_STATE</div><div class="line">WRITE_EXTERNAL_STORAGE/READ_EXTERNAL_STORAGE</div></pre></td></tr></table></figure></p>
+<p>其中READ_PHONE_STATE用来获取deviceID，即IMEI号码。这是很多统计依赖计算设备唯一ID的参考。如果新的权限导致读取不到，避免导致统计的异常。建议在完全支持运行时权限之前，将对应的值写入到App本地数据中，对于新安装的，可以采取其他策略减少对统计的影响。</p>
+<p>WRITE_EXTERNAL_STORAGE/READ_EXTERNAL_STORAGE这两个权限和外置存储（即sdcard）有关，对于下载相关的应用这一点还是比较重要的，我们应该尽可能的说明和引导用户授予该权限。</p>
+<h4 id="简单易用的第三方库"><a href="#简单易用的第三方库" class="headerlink" title="简单易用的第三方库"></a>简单易用的第三方库</h4><p>RxPermission：<a href="https://github.com/tbruyelle/RxPermissions" target="_blank" rel="external">https://github.com/tbruyelle/RxPermissions</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;Android6.0的发布也证明了Google开始在安全和权限的控制，以及给用户更人性化的方式去使用Android系统。6.0带来了一个主要的新特性：运行时权限。&lt;br&gt;&lt;br&gt;在以前的版本，我们只需要在mainfest文件中声明所需要的权限，及可获得整个应用程序使用过程中的权限，这些权限在我们安装应用程序时会列出。&lt;br&gt;&lt;br&gt;而运行时权限则是当我们需要使用某个敏感权限时，弹出一个对话框，让用户去选择是否同意授权，这样一定程度上保护了用户的隐私安全，这个处理权完全在用户手上。&lt;/p&gt;
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;Android6.0的发布也证明了Google开始在安全和权限的控制，以及给用户更人性化的方式去使用Android系统。6.0带来了一个主要的新特性：运行时权限。&lt;br&gt;&lt;br&gt;在以前的版本，我们只需要在mainfest文件中声明所需要的权限，及可获得整个应用程序使用过程中的权限，这些权限在我们安装应用程序时会列出。&lt;br&gt;&lt;br&gt;而运行时权限则是当我们需要使用某个敏感权限时，弹出一个对话框，让用户去选择是否同意授权，这样一定程度上保护了用户的隐私安全，这个处理权完全在用户手上。&lt;/p&gt;
     
     </summary>
+    
+      <category term="Android" scheme="http://haodadaa.github.io/categories/Android/"/>
+    
+    
+      <category term="运行时权限" scheme="http://haodadaa.github.io/tags/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RxJava2.0 操作符简介</title>
+    <link href="http://haodadaa.github.io/2017/05/18/RxJava%E6%93%8D%E4%BD%9C%E7%AC%A6%E7%AE%80%E4%BB%8B/"/>
+    <id>http://haodadaa.github.io/2017/05/18/RxJava操作符简介/</id>
+    <published>2017-05-18T07:00:00.000Z</published>
+    <updated>2017-05-22T13:45:05.074Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>just操作符</li>
+</ul>
+<p>just()，直接创建一个Observable并自动调用onNext()发射数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;String&gt; observable = Observable.just(<span class="string">"Hello World"</span>);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>fromIterable操作符</li>
+</ul>
+<p>fromIterable()，遍历集合，然后发射每一个item，相当于多次调用onNext()，每次传一个item</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">    list.add(i + <span class="string">""</span>);</div><div class="line">&#125;</div><div class="line">Observable&lt;String&gt; observable = Observable.fromIterable((Iterable&lt;String&gt;) list);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<ul>
+<li>defer操作符</li>
+</ul>
+<p>defer()，当观察者订阅时，才创建Observable，并且针对每个观察者创建都是一个新的Observable。以何种方式创建这个Observable对象，当满足回调条件后，就会进行相应的回调。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Observable&lt;String&gt; observable = Observable.defer(<span class="keyword">new</span> Callable&lt;ObservableSource&lt;? extends String&gt;&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> ObservableSource&lt;? extends String&gt; call() <span class="keyword">throws</span> Exception &#123;</div><div class="line">         <span class="keyword">return</span> Observable.just(<span class="string">"hello"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>interval操作符</li>
+</ul>
+<p>interval()，创建一个按固定时间间隔发射整数序列的Observable，即按照固定秒数一次调用onNext(),可用作定时器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Long&gt; observable = Observable.interval(<span class="number">1</span>, TimeUnit.SECONDS);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>range操作符</li>
+</ul>
+<p>range()，创建一个发射整数序列的Observable，第一个参数为起始值，第二个参数为发送个数，0则不发送，负数则抛出异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Integer&gt; observable = Observable.range(<span class="number">1</span>, <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>timer操作符</li>
+</ul>
+<p>timer()，给定一个延迟时间间隔发射数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Long&gt; observable = Observable.timer(<span class="number">2</span>,TimeUnit.SECONDS);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>repeat操作符</li>
+</ul>
+<p>repeat()，重复调用一个Observable事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Observable&lt;String&gt; observable = Observable.just(<span class="string">"1"</span>).repeat();</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>map操作符</li>
+</ul>
+<p>map()，把原来的Observable对象转换为另一个Observable对象，对传输的数据进行灵活操作，获取想要的数据形式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Integer&gt; observable = Observable.just(<span class="string">"hello"</span>).map(<span class="keyword">new</span> Function&lt;String, Integer&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">apply</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">           <span class="keyword">return</span> s.length();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>flatMap操作符</li>
+</ul>
+<hr>
+<ul>
+<li>filter操作符</li>
+</ul>
+<hr>
+<ul>
+<li>take操作符</li>
+</ul>
+<hr>
+<ul>
+<li>doOnNext操作符</li>
+</ul>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;just操作符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;just()，直接创建一个Observable并自动调用onNext()发射数据&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Observable&amp;lt;String&amp;gt; observable = Observable.just(&lt;span class=&quot;string&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;fromIterable操作符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;fromIterable()，遍历集合，然后发射每一个item，相当于多次调用onNext()，每次传一个item&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;List&amp;lt;String&amp;gt; list = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;&amp;gt;();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;; i++) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    list.add(i + &lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Observable&amp;lt;String&amp;gt; observable = Observable.fromIterable((Iterable&amp;lt;String&amp;gt;) list);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://haodadaa.github.io/categories/Android/"/>
+    
+    
+      <category term="RxJava" scheme="http://haodadaa.github.io/tags/RxJava/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gradle项目依赖统一管理</title>
+    <link href="http://haodadaa.github.io/2017/03/20/Gradle%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86/"/>
+    <id>http://haodadaa.github.io/2017/03/20/Gradle项目依赖统一管理/</id>
+    <published>2017-03-20T08:30:18.000Z</published>
+    <updated>2017-05-22T13:42:09.858Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　通常情况下，我们只有一application module时，只需要配置一个project级的build.gradle和一个module级的build.gradle。<br><br>　　当我们一个项目下有多个module并且依赖也比较复杂时，如果这时需要修改某个开源库的版本依赖，则需要找到每个引用依赖的地方进行修改。<br><br>　　如果我们自定义一个配置文件统一的管理这些依赖，不仅方便我们修改还减少错误率。</p>
+<a id="more"></a>
+<hr>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>　　在root目录声明全局变量，在project级build.gradle中apply from引用进来，使用rootProject.ext引用具体的库依赖</p>
+<hr>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li><p>在项目的根文件夹下新建一个config.gradle（名字可以自己定义)声明全局变量，内容如下(请根据自己库和版本进行修改)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">def supportVersion = <span class="string">"25.0.1"</span></div><div class="line">def retrofitVersion = <span class="string">"2.0.2"</span></div><div class="line">def butterKnifeVersion = <span class="string">"8.1.0"</span></div><div class="line"></div><div class="line">project.ext &#123;</div><div class="line">    android = [</div><div class="line">            compileSdkVersion: <span class="number">25</span>,</div><div class="line">            buildToolsVersion: <span class="string">"25.0.1"</span>,</div><div class="line">            applicationId    : <span class="string">"com.hao.mybaselib"</span>,</div><div class="line">            minSdkVersion    : <span class="number">16</span>,</div><div class="line">            targetSdkVersion : <span class="number">25</span>,</div><div class="line">            versionCode      : <span class="number">1</span>,</div><div class="line">            versionName      : <span class="string">"1.0"</span>,</div><div class="line">            javaVersion      : JavaVersion.VERSION_1_8</div><div class="line">    ]</div><div class="line"></div><div class="line">    dependencies = [</div><div class="line">            <span class="comment">//android-support</span></div><div class="line">            <span class="string">"support-v4"</span>   : <span class="string">"com.android.support:support-v4:$&#123;supportVersion&#125;"</span>,</div><div class="line">            <span class="string">"appcompat-v7"</span> : <span class="string">"com.android.support:appcompat-v7:$&#123;supportVersion&#125;"</span>,</div><div class="line">            <span class="string">"design"</span>       : <span class="string">"com.android.support:design:$&#123;supportVersion&#125;"</span>,</div><div class="line">            <span class="string">"recyclerview"</span> : <span class="string">"com.android.support:recyclerview-v7:$&#123;supportVersion&#125;"</span>,</div><div class="line">            <span class="string">"cardview"</span>     : <span class="string">"com.android.support:cardview-v7:$&#123;supportVersion&#125;"</span>,</div><div class="line"></div><div class="line">            <span class="comment">//rx</span></div><div class="line">            <span class="string">"rxjava"</span>       : <span class="string">"io.reactivex:rxjava:1.1.6"</span>,</div><div class="line">            <span class="string">"rxandroid"</span>    : <span class="string">"io.reactivex:rxandroid:1.2.1"</span>,</div><div class="line"></div><div class="line">            <span class="comment">//retrofit</span></div><div class="line">            <span class="string">"retrofit"</span>      : <span class="string">"com.squareup.retrofit2:retrofit:$&#123;retrofitVersion&#125;"</span>,</div><div class="line">            <span class="string">"adapter-rxjava"</span>: <span class="string">"com.squareup.retrofit2:adapter-rxjava:$&#123;retrofitVersion&#125;"</span>,</div><div class="line"></div><div class="line">            <span class="comment">//others</span></div><div class="line">            <span class="string">"okhttp3-logging-interceptor"</span>: <span class="string">"com.squareup.okhttp3:logging-interceptor:3.1.2"</span>,</div><div class="line">            <span class="string">"butterknife"</span>                : <span class="string">"com.jakewharton:butterknife:$&#123;butterKnifeVersion&#125;"</span>,</div><div class="line">            <span class="string">"butterknife-compiler"</span>       : <span class="string">"com.jakewharton:butterknife-compiler:$&#123;butterKnifeVersion&#125;"</span>,</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在项目级的build.gradle添加apply from引用</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply from: <span class="string">"config.gradle"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>在module级的build.gradle中使用如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.library'</span></div><div class="line">apply plugin: <span class="string">'com.neenbedankt.android-apt'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion rootProject.ext.android.compileSdkVersion</div><div class="line">    buildToolsVersion rootProject.ext.android.buildToolsVersion</div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line"><span class="comment">//        applicationId "com.hao.mybaselib"</span></div><div class="line">        minSdkVersion rootProject.ext.android.minSdkVersion</div><div class="line">        targetSdkVersion rootProject.ext.android.targetSdkVersion</div><div class="line">        versionCode rootProject.ext.android.versionCode</div><div class="line">        versionName rootProject.ext.android.versionName</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            <span class="function">minifyEnabled <span class="keyword">false</span></span></div><div class="line">            proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android.txt'</span>)</span>, 'proguard-rules.pro'</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(include: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)</span></span></div><div class="line">    testCompile 'junit:junit:4.12'</div><div class="line">    compile rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"appcompat-v7"</span>)</span></div><div class="line">    compile rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"recyclerview"</span>)</span></div><div class="line">    <span class="comment">//ButterKnife</span></div><div class="line">    compile rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"butterknife"</span>)</span></div><div class="line">    apt rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"butterknife-compiler"</span>)</span></div><div class="line">    <span class="comment">//rx</span></div><div class="line">    compile rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"rxjava"</span>)</span></div><div class="line">    compile rootProject.ext.dependencies.<span class="title">getAt</span><span class="params">(<span class="string">"rxandroid"</span>)</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　之后若需要修改版本或配置，只需要在config.gradle中做修改。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　通常情况下，我们只有一application module时，只需要配置一个project级的build.gradle和一个module级的build.gradle。&lt;br&gt;&lt;br&gt;　　当我们一个项目下有多个module并且依赖也比较复杂时，如果这时需要修改某个开源库的版本依赖，则需要找到每个引用依赖的地方进行修改。&lt;br&gt;&lt;br&gt;　　如果我们自定义一个配置文件统一的管理这些依赖，不仅方便我们修改还减少错误率。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://haodadaa.github.io/categories/Android/"/>
     
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://haodadaa.github.io/2016/09/02/hello-world/"/>
-    <id>http://haodadaa.github.io/2016/09/02/hello-world/</id>
-    <published>2016-09-02T07:02:46.800Z</published>
-    <updated>2017-05-19T18:37:37.907Z</updated>
+    <link href="http://haodadaa.github.io/2016/08/08/hello-world/"/>
+    <id>http://haodadaa.github.io/2016/08/08/hello-world/</id>
+    <published>2016-08-08T08:25:17.000Z</published>
+    <updated>2017-05-22T13:31:55.839Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <a id="more"></a>
@@ -201,6 +234,8 @@
       &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
     
     </summary>
+    
+      <category term="建站" scheme="http://haodadaa.github.io/categories/%E5%BB%BA%E7%AB%99/"/>
     
     
   </entry>
