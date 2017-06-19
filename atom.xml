@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://haodadaa.github.io/"/>
-  <updated>2017-05-22T13:41:28.611Z</updated>
+  <updated>2017-06-19T08:29:39.516Z</updated>
   <id>http://haodadaa.github.io/</id>
   
   <author>
@@ -14,6 +14,276 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PC-硬件评测软件</title>
+    <link href="http://haodadaa.github.io/2017/06/19/PC-%E7%A1%AC%E4%BB%B6%E8%AF%84%E6%B5%8B%E8%BD%AF%E4%BB%B6/"/>
+    <id>http://haodadaa.github.io/2017/06/19/PC-硬件评测软件/</id>
+    <published>2017-06-19T08:18:57.000Z</published>
+    <updated>2017-06-19T08:29:39.516Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><hr>
+<h4 id="CPU-amp-GPU"><a href="#CPU-amp-GPU" class="headerlink" title="CPU&amp;GPU"></a>CPU&amp;GPU</h4><ul>
+<li>CPU-Z &amp; GPU-Z</li>
+<li>CINEBENCH(准确度高)</li>
+<li>Fritz Chess Benchmark(CPU,可调节线程)</li>
+<li>Unigine Heaven(GPU)</li>
+<li>3DMark</li>
+</ul>
+<a id="more"></a>
+<h4 id="硬盘"><a href="#硬盘" class="headerlink" title="硬盘"></a>硬盘</h4><ul>
+<li>CrystalDiskMark</li>
+<li>AS SSD</li>
+</ul>
+<h4 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h4><ul>
+<li>Furmark</li>
+<li>ORTHOS</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;分类&quot;&gt;&lt;a href=&quot;#分类&quot; class=&quot;headerlink&quot; title=&quot;分类&quot;&gt;&lt;/a&gt;分类&lt;/h2&gt;&lt;hr&gt;
+&lt;h4 id=&quot;CPU-amp-GPU&quot;&gt;&lt;a href=&quot;#CPU-amp-GPU&quot; class=&quot;headerlink&quot; title=&quot;CPU&amp;amp;GPU&quot;&gt;&lt;/a&gt;CPU&amp;amp;GPU&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;CPU-Z &amp;amp; GPU-Z&lt;/li&gt;
+&lt;li&gt;CINEBENCH(准确度高)&lt;/li&gt;
+&lt;li&gt;Fritz Chess Benchmark(CPU,可调节线程)&lt;/li&gt;
+&lt;li&gt;Unigine Heaven(GPU)&lt;/li&gt;
+&lt;li&gt;3DMark&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="PC-Windows" scheme="http://haodadaa.github.io/categories/PC-Windows/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PC-日常应用软件</title>
+    <link href="http://haodadaa.github.io/2017/06/19/PC-%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90%E8%BD%AF%E4%BB%B6/"/>
+    <id>http://haodadaa.github.io/2017/06/19/PC-休闲娱乐软件/</id>
+    <published>2017-06-19T02:52:27.000Z</published>
+    <updated>2017-06-19T08:20:03.913Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><hr>
+<h4 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h4><ul>
+<li>网易云音乐</li>
+<li>AIMP</li>
+<li>Foobar2000</li>
+</ul>
+<a id="more"></a>
+<h4 id="抓轨"><a href="#抓轨" class="headerlink" title="抓轨"></a>抓轨</h4><ul>
+<li>Exact Audio Copy</li>
+</ul>
+<h4 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h4><ul>
+<li>SAI</li>
+</ul>
+<h4 id="修图"><a href="#修图" class="headerlink" title="修图"></a>修图</h4><ul>
+<li>Adobe Illustrator</li>
+<li>Inkscape</li>
+</ul>
+<h4 id="网盘"><a href="#网盘" class="headerlink" title="网盘"></a>网盘</h4><ul>
+<li>百度网盘</li>
+</ul>
+<h4 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h4><ul>
+<li>VirtualBox</li>
+</ul>
+<h4 id="硬件检测"><a href="#硬件检测" class="headerlink" title="硬件检测"></a>硬件检测</h4><ul>
+<li>EverestUltimatePortable</li>
+</ul>
+<h4 id="硬盘检测"><a href="#硬盘检测" class="headerlink" title="硬盘检测"></a>硬盘检测</h4><ul>
+<li>DiskGenius</li>
+</ul>
+<h4 id="屏幕亮度调节"><a href="#屏幕亮度调节" class="headerlink" title="屏幕亮度调节"></a>屏幕亮度调节</h4><ul>
+<li>Flux</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;分类&quot;&gt;&lt;a href=&quot;#分类&quot; class=&quot;headerlink&quot; title=&quot;分类&quot;&gt;&lt;/a&gt;分类&lt;/h2&gt;&lt;hr&gt;
+&lt;h4 id=&quot;音乐&quot;&gt;&lt;a href=&quot;#音乐&quot; class=&quot;headerlink&quot; title=&quot;音乐&quot;&gt;&lt;/a&gt;音乐&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;网易云音乐&lt;/li&gt;
+&lt;li&gt;AIMP&lt;/li&gt;
+&lt;li&gt;Foobar2000&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="PC-Windows" scheme="http://haodadaa.github.io/categories/PC-Windows/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PC-编程常用软件</title>
+    <link href="http://haodadaa.github.io/2017/06/19/PC-%E7%BC%96%E7%A8%8B%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"/>
+    <id>http://haodadaa.github.io/2017/06/19/PC-编程常用软件/</id>
+    <published>2017-06-19T02:51:12.000Z</published>
+    <updated>2017-06-19T16:27:25.393Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><hr>
+<h4 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h4><ul>
+<li>XMind</li>
+<li>幕布（文档编辑）</li>
+</ul>
+<h4 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h4><ul>
+<li>Microsoft Visio</li>
+</ul>
+<h4 id="Markdown编辑"><a href="#Markdown编辑" class="headerlink" title="Markdown编辑"></a>Markdown编辑</h4><ul>
+<li>MarkdownPad2</li>
+</ul>
+<a id="more"></a>
+<h4 id="Android开发"><a href="#Android开发" class="headerlink" title="Android开发"></a>Android开发</h4><ul>
+<li>Android Studio</li>
+<li>adb 1.0.32</li>
+</ul>
+<h4 id="AS插件"><a href="#AS插件" class="headerlink" title="AS插件"></a>AS插件</h4><ul>
+<li>Android ButterKnife Zelezny</li>
+<li>Android Parcelable code generator</li>
+<li>Code Iris</li>
+<li>ECTranslation</li>
+<li>FindBugs-IDEA</li>
+<li>GsonFormat</li>
+<li>Sexy Editor</li>
+</ul>
+<h4 id="模拟器"><a href="#模拟器" class="headerlink" title="模拟器"></a>模拟器</h4><ul>
+<li>Genymotion</li>
+</ul>
+<h4 id="接口调试（Chrome插件）"><a href="#接口调试（Chrome插件）" class="headerlink" title="接口调试（Chrome插件）"></a>接口调试（Chrome插件）</h4><ul>
+<li>Postman</li>
+<li>Advanced REST client</li>
+</ul>
+<h4 id="分布式管理"><a href="#分布式管理" class="headerlink" title="分布式管理"></a>分布式管理</h4><ul>
+<li>Git</li>
+<li>Github</li>
+<li>TortoiseSVN</li>
+</ul>
+<h4 id="工具包"><a href="#工具包" class="headerlink" title="工具包"></a>工具包</h4><ul>
+<li>JDK 1.7</li>
+<li>JDK 1.8</li>
+</ul>
+<h4 id="翻墙"><a href="#翻墙" class="headerlink" title="翻墙"></a>翻墙</h4><ul>
+<li>OpenVPN</li>
+<li>Shadowsocks</li>
+</ul>
+<h4 id="代码编辑"><a href="#代码编辑" class="headerlink" title="代码编辑"></a>代码编辑</h4><ul>
+<li>Sublime Text 3</li>
+</ul>
+<h4 id="SublimeText3插件"><a href="#SublimeText3插件" class="headerlink" title="SublimeText3插件"></a>SublimeText3插件</h4><ul>
+<li>Package Control</li>
+<li>Localization</li>
+<li>Material Theme</li>
+<li>SublimeTextTrans</li>
+</ul>
+<h4 id="反汇编工具"><a href="#反汇编工具" class="headerlink" title="反汇编工具"></a>反汇编工具</h4><ul>
+<li>IDA Pro 6.8</li>
+</ul>
+<h4 id="SQLite可视化管理"><a href="#SQLite可视化管理" class="headerlink" title="SQLite可视化管理"></a>SQLite可视化管理</h4><ul>
+<li>SQLite Expert</li>
+</ul>
+<h4 id="博客建站"><a href="#博客建站" class="headerlink" title="博客建站"></a>博客建站</h4><ul>
+<li>npm 3.10.3</li>
+<li>nodejs 6.3.1</li>
+<li>hexo 3.2.2</li>
+</ul>
+<h4 id="npm插件"><a href="#npm插件" class="headerlink" title="npm插件"></a>npm插件</h4><ul>
+<li>hexo-generator-cname</li>
+</ul>
+<h4 id="电脑录屏"><a href="#电脑录屏" class="headerlink" title="电脑录屏"></a>电脑录屏</h4><ul>
+<li>Bandicam</li>
+</ul>
+<h4 id="Gif录制"><a href="#Gif录制" class="headerlink" title="Gif录制"></a>Gif录制</h4><ul>
+<li>GifCam</li>
+</ul>
+<h4 id="专业截屏"><a href="#专业截屏" class="headerlink" title="专业截屏"></a>专业截屏</h4><ul>
+<li>Snagit</li>
+</ul>
+<h4 id="图片标注"><a href="#图片标注" class="headerlink" title="图片标注"></a>图片标注</h4><ul>
+<li>PxCook</li>
+</ul>
+<h4 id="个人收藏-chrome插件"><a href="#个人收藏-chrome插件" class="headerlink" title="个人收藏(chrome插件)"></a>个人收藏(chrome插件)</h4><ul>
+<li>Pocket</li>
+</ul>
+<h4 id="画类图"><a href="#画类图" class="headerlink" title="画类图"></a>画类图</h4><ul>
+<li>StarUML</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;分类&quot;&gt;&lt;a href=&quot;#分类&quot; class=&quot;headerlink&quot; title=&quot;分类&quot;&gt;&lt;/a&gt;分类&lt;/h2&gt;&lt;hr&gt;
+&lt;h4 id=&quot;思维导图&quot;&gt;&lt;a href=&quot;#思维导图&quot; class=&quot;headerlink&quot; title=&quot;思维导图&quot;&gt;&lt;/a&gt;思维导图&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;XMind&lt;/li&gt;
+&lt;li&gt;幕布（文档编辑）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;流程图&quot;&gt;&lt;a href=&quot;#流程图&quot; class=&quot;headerlink&quot; title=&quot;流程图&quot;&gt;&lt;/a&gt;流程图&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Microsoft Visio&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;Markdown编辑&quot;&gt;&lt;a href=&quot;#Markdown编辑&quot; class=&quot;headerlink&quot; title=&quot;Markdown编辑&quot;&gt;&lt;/a&gt;Markdown编辑&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;MarkdownPad2&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="PC-Windows" scheme="http://haodadaa.github.io/categories/PC-Windows/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android反编译</title>
+    <link href="http://haodadaa.github.io/2017/06/02/Android%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    <id>http://haodadaa.github.io/2017/06/02/Android反编译/</id>
+    <published>2017-06-02T02:17:05.000Z</published>
+    <updated>2017-06-16T03:38:34.262Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>每当我们在一个App上看到一个很不错的实现或效果时，我们可能会想具体的实现是如何做到的。这时我们拥有这个App的apk包，其中包含了项目的源码和资源文件，我们可以反编译去学习和借鉴成熟的App的做法，来丰富我们的知识。<br><font color="#0088ff">（ps：反编译本质是破解，获取源代码，我们只提倡通过反编译来学习借鉴别人好的方法和实现，而不是修改源码来获取暴利。为了维护app的安全、保护知识产权，工程师们通过混淆、加固（加壳）等方式来加强阅读难度、加大破解难度。）</font><br></p>
+<a id="more"></a>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li>apktool 2.2.2（反编译apk，获取smali源码和资源文件）</li>
+<li>dex2jar 2.0（将dex文件转化为jar包）</li>
+<li>jd-gui（查看jar包内容）</li>
+<li>jadx 0.6.1（查看jar包内容）</li>
+</ul>
+<h4 id="ApkTool"><a href="#ApkTool" class="headerlink" title="ApkTool"></a>ApkTool</h4><ul>
+<li>smali语法是Android虚拟机识别执行的指令代码，和dex文件可以相互转化</li>
+<li>可以得到所有的资源文件，包括xml、图片资源和默认资源，在分析时，大概知道哪些属于默认资源，区分开来才不会混淆。</li>
+</ul>
+<p><font color="#ff0000">注意</font>：一些大公司会利用apktool的漏洞来防止反编译成功，所以尽量保持工具的更新，对能力强的可以在github下载源码自己动手修复这些问题。</p>
+<h4 id="dex2jar"><a href="#dex2jar" class="headerlink" title="dex2jar"></a>dex2jar</h4><ul>
+<li>把apk包改成rar或zip解压，可以得到mainfest、res资源文件和classes.dex，但是这些资源文件是遵循arsc格式的字节码，而我们通过dex2jar工具就可以把classes.dex转化为classes.jar。<br></li>
+</ul>
+<p><font color="#ff0000">注意</font>：对于没有混淆和加固的dex，我们才能直接获取到可阅读的源码，混淆过的源码，打开后包名和类名都会变成abc这些没有任何意义的字母；加固后的源码我们只会获得几个类（例如360加固，包名会变成com.qihoo.util）。</p>
+<h4 id="jd-gui-amp-jadx"><a href="#jd-gui-amp-jadx" class="headerlink" title="jd-gui &amp; jadx"></a>jd-gui &amp; jadx</h4><ul>
+<li>转化后的jar包可以用jd-gui打开，查看具体的源码内容和导出源码，但是导出的源码的resId是真实数字，并不能还原到真正的源码，所以适合学习流程和实现，如果还原源码那修改这些Id会让你很烦躁。</li>
+<li>jadx相比jd-gui，其resId则是更接近源码，只有少数resId是真实数字，修改幅度较小。同时这个工具可以实现反编译，可视化和分析apk结构，相比apktool，它的反编译较耗时，不能修改代码和回编译。</li>
+</ul>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><ol>
+<li>在apktool文件夹下，shift+右键打开命令行界面，假设我们反编译的apk为abc.apk，将apk放到文件夹下，输入命令行：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">apktool.bat d -f  abc.apk -o abc</div><div class="line">\\apktool.bat d -f [apk包] -o [输出文件夹]</div><div class="line">\\在低版本的apktool为apktool.bat d -f [apk包] [输出文件夹]，建议使用高版本</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>即可以看到在apktool文件夹下生成abc文件夹，反编译的资源文件就在这个文件夹下。</p>
+<ol>
+<li>同样定位到dex2jar文件夹下，打开命令行界面，通过apk转格式解压获得classes.dex放到该文件夹下，在命令行界面输入：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d2j-dex2jar.bat classess.dex</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>执行完成后，在文件夹下多出一个同名jar包，可以使用jd-gui、jadx查看源码，并导出源码。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;每当我们在一个App上看到一个很不错的实现或效果时，我们可能会想具体的实现是如何做到的。这时我们拥有这个App的apk包，其中包含了项目的源码和资源文件，我们可以反编译去学习和借鉴成熟的App的做法，来丰富我们的知识。&lt;br&gt;&lt;font color=#0088ff&gt;（ps：反编译本质是破解，获取源代码，我们只提倡通过反编译来学习借鉴别人好的方法和实现，而不是修改源码来获取暴利。为了维护app的安全、保护知识产权，工程师们通过混淆、加固（加壳）等方式来加强阅读难度、加大破解难度。）&lt;/font&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://haodadaa.github.io/categories/Android/"/>
+    
+    
+      <category term="反编译" scheme="http://haodadaa.github.io/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 6.0运行时权限</title>
@@ -236,6 +506,22 @@
     </summary>
     
       <category term="建站" scheme="http://haodadaa.github.io/categories/%E5%BB%BA%E7%AB%99/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>人物志</title>
+    <link href="http://haodadaa.github.io/1994/12/31/%E4%BA%BA%E7%89%A9%E5%BF%97/"/>
+    <id>http://haodadaa.github.io/1994/12/31/人物志/</id>
+    <published>1994-12-31T02:00:00.000Z</published>
+    <updated>2017-06-19T07:30:49.582Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Me" scheme="http://haodadaa.github.io/categories/Me/"/>
     
     
   </entry>
