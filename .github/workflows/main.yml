@@ -1,8 +1,11 @@
-name: Flutter Web Build To Github Page
+name: Build Flutter Web
 on:
   push:
     branches:
       - flutter_source
+    paths:
+      - 'version'
+
 jobs:
   build-and-deploy:
     runs-on: macos-latest
