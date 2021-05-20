@@ -5,15 +5,22 @@ on:
       - flutter_source
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
+      # 获取flutter源码
+      # https://github.com/actions/checkout
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
+      # flutter环境
+      # https://github.com/marketplace/actions/flutter-action
       - name: build
         uses: subosito/flutter-action@v1
         with:
-          channel: '2.0.6'
+          flutter-version: '2.0.6'
+          channel: 'stable'
+
+      # 执行命令行
       - run: flutter pub get
       - run: flutter build web --release
 
