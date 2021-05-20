@@ -2,6 +2,8 @@
 
 A Flutter Project
 
+[![Deploy](https://github.com/haodadaa/haodadaa.github.io/actions/workflows/main.yml/badge.svg)](https://github.com/haodadaa/haodadaa.github.io/actions/workflows/main.yml)
+
 #### 自动化部署
 
 * 配置 GitHub Actions Flutter 的自动化部署

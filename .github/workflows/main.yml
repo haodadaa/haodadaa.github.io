@@ -24,9 +24,10 @@ jobs:
       - run: flutter pub get
       - run: flutter build web --release
 
+      # https://github.com/JamesIves/github-pages-deploy-action
       - name: deploy
-        uses: peaceiris/actions-gh-pages@v2.5.0
-        env:
-          PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          PUBLISH_BRANCH: master
-          PUBLISH_DIR: ./build/web
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          branch: master
+          folder: build/web
