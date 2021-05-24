@@ -27,6 +27,7 @@ jobs:
       - run: flutter pub get
       - run: flutter build web --release
       - run: cp other/CNAME build/web/CNAME
+      - run: cp other/README.md build/web/README.md
 
       # https://github.com/JamesIves/github-pages-deploy-action
       - name: deploy
