@@ -26,6 +26,7 @@ jobs:
       # 执行命令行
       - run: flutter pub get
       - run: flutter build web --release
+      - run: cp other/CNAME build/web/CNAME
 
       # https://github.com/JamesIves/github-pages-deploy-action
       - name: deploy
