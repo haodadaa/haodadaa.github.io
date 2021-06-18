@@ -25,7 +25,7 @@ jobs:
 
       # 执行命令行
       - run: flutter pub get
-      - run: flutter build web --release
+      - run: flutter build web --release --dart-define=FLUTTER_WEB_CANVASKIT_URL=https://cdn.jsdelivr.net/npm/canvaskit-wasm@0.24.0/bin/
       - run: cp other/CNAME build/web/CNAME
       - run: cp other/README.md build/web/README.md
 
