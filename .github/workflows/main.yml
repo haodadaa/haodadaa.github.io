@@ -20,7 +20,7 @@ jobs:
       - name: build
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: '2.0.6'
+          flutter-version: '2.2.1'
           channel: 'stable'
 
       # 执行命令行

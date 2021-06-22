@@ -4,14 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:logger/logger.dart';
 
 import 'module/global/global_localization_delegate.dart';
 
 void main() {
-  runApp(GlobalApp());
+  assert(() {
+    Logger.addLogAdapter(LoggerAdapter());
+    return true;
+  }());
+  runApp(const GlobalApp());
 }
 
 class GlobalApp extends StatefulWidget {
+  const GlobalApp({Key? key}) : super(key: key);
+
   @override
   _GlobalAppState createState() => _GlobalAppState();
 }
@@ -19,18 +26,21 @@ class GlobalApp extends StatefulWidget {
 class _GlobalAppState extends State<GlobalApp> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    Logger.i('App Start');
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) {
           return GlobalBloc(this);
         }),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     );
   }
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GlobalBloc, GlobalState>(
@@ -48,7 +58,7 @@ class MyApp extends StatelessWidget {
           supportedLocales:
               GlobalLocalizationDelegate.delegate.supportedLocales,
           builder: (context, widget) {
-            return HomePage();
+            return const HomePage();
           },
         );
       },

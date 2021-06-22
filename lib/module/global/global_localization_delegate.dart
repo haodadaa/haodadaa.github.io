@@ -59,13 +59,13 @@ class GlobalLocalizationDelegate
 }
 
 class GlobalLocalizations {
-  static Map<Language, LocaleText> _localeTexts = {
+  static final Map<Language, LocaleText> _localeTexts = {
     Language.sc: LocaleTextSC(),
     Language.tc: LocaleTextTC(),
     Language.en: LocaleTextEN(),
   };
 
-  static Map<Language, LocaleImage> _localeImages = {
+  static final Map<Language, LocaleImage> _localeImages = {
     Language.sc: LocaleImageSC(),
     Language.tc: LocaleImageTC(),
     Language.en: LocaleImageEN(),

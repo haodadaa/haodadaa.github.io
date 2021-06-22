@@ -17,15 +17,15 @@ class FPS extends StatefulWidget {
 class _FPSState extends State<FPS> {
   ListQueue<FrameTiming> lastFrames = ListQueue<FrameTiming>(60);
 
-  StreamController<double> _fpsController = StreamController.broadcast();
+  final StreamController<double> _fpsController = StreamController.broadcast();
   late Timer intervalTimer;
 
   @override
   void initState() {
     super.initState();
     SchedulerBinding.instance?.addTimingsCallback(timingCallback);
-    intervalTimer = Timer.periodic(Duration(microseconds: 1000), (timer) {
-      if (lastFrames.length == 0) {
+    intervalTimer = Timer.periodic(const Duration(microseconds: 1000), (timer) {
+      if (lastFrames.isEmpty) {
         return;
       }
       _fpsController.add(FPSUtil.fps(lastFrames));
@@ -63,7 +63,7 @@ class _FPSState extends State<FPS> {
               return Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 12, top: 12),
+                  padding: const EdgeInsets.only(left: 12, top: 12),
                   child: Text(
                     (snapshot.data! ~/ 1).toString(),
                     style: Theme.of(context).textTheme.bodyText2,
@@ -79,9 +79,9 @@ class _FPSState extends State<FPS> {
 }
 
 class FPSUtil {
-  static const REFRESH_RATE = 60;
-  static const frameInterval = const Duration(
-      microseconds: Duration.microsecondsPerSecond ~/ REFRESH_RATE);
+  static const refreshRate = 60;
+  static const frameInterval =
+      Duration(microseconds: Duration.microsecondsPerSecond ~/ refreshRate);
 
   static double fps(ListQueue<FrameTiming> lastFrames) {
     List<FrameTiming> lastFramesSet = <FrameTiming>[];
@@ -108,6 +108,6 @@ class FPSUtil {
     }).fold(0, (int a, int b) {
       return a + b;
     });
-    return framesCount * REFRESH_RATE / costCount;
+    return framesCount * refreshRate / costCount;
   }
 }

@@ -5,6 +5,8 @@ import 'package:blog/widget/mouse_region_effect.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -24,11 +26,11 @@ class _HomePageState extends State<HomePage> {
       body: FoldWidget(
         // displayPadding: const EdgeInsets.only(top: 52, right: 52),
         // initial: FoldStatus.fold,
-        background: Container(
+        background: SizedBox(
           height: 52,
           child: Row(
             children: [
-              Spacer(),
+              const Spacer(),
               DayNightSwitcher(
                 assets: [
                   context.localImage.themeDay,
@@ -41,31 +43,31 @@ class _HomePageState extends State<HomePage> {
                   // context.globalBloc.add(SwitchAppTheme());
                 },
               ),
-              SizedBox(width: 14),
+              const SizedBox(width: 14),
               Container(
                 width: 30,
                 height: 30,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.blueAccent,
                 ),
               ),
-              SizedBox(width: 24),
+              const SizedBox(width: 24),
             ],
           ),
         ),
         display: Container(
           decoration: BoxDecoration(
             color: context.themeStyle.primaryColor,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topRight: Radius.circular(12),
             ),
           ),
           child: Stack(
             children: [
               GridView.builder(
-                padding: EdgeInsets.all(30),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                padding: const EdgeInsets.all(30),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   crossAxisSpacing: 30,
                   mainAxisSpacing: 30,
@@ -73,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) {
                   return MouseShadowWidget(
                     translate: 7,
-                    shadowColor: Color(0x33333333),
+                    shadowColor: const Color(0x33333333),
                     child: Container(),
                   );
                 },
@@ -83,11 +85,11 @@ class _HomePageState extends State<HomePage> {
                 top: 30,
                 right: 0,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(4),
                     topLeft: Radius.circular(4),
                   ),
-                  child: Container(
+                  child: SizedBox(
                     width: 25,
                     child: ListView.builder(
                       shrinkWrap: true,
@@ -103,12 +105,12 @@ class _HomePageState extends State<HomePage> {
                                   width: 25,
                                   height: 25,
                                   alignment: Alignment.center,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Colors.redAccent,
                                   ),
                                   child: Text(
                                     '$index',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 11,
                                       fontWeight: FontWeight.w500,

@@ -73,7 +73,7 @@ class _MouseShadowWidgetState extends State<MouseShadowWidget>
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
-                    color: (widget.shadowColor ?? Color(0x61000000))
+                    color: (widget.shadowColor ?? const Color(0x61000000))
                         .withOpacity(shadowAnimation.value),
                     blurRadius: 4 * shadowAnimation.value,
                   ),

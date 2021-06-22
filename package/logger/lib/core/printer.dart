@@ -34,9 +34,9 @@ abstract class Printer {
 }
 
 class LoggerPrinter extends Printer {
-  static const int JSON_INDENT = 2;
+  static const int jsonIndent = 2;
 
-  List<LogAdapter> _logAdapters = [];
+  final List<LogAdapter> _logAdapters = [];
 
   String? _globalTag;
 
@@ -161,7 +161,7 @@ class LoggerPrinter extends Printer {
     }
     try {
       var decodedJson = jsonDecode(json);
-      var spaces = ' ' * JSON_INDENT;
+      var spaces = ' ' * jsonIndent;
       var encoder = JsonEncoder.withIndent(spaces);
       String prettyJson = encoder.convert(decodedJson);
       i(prettyJson, tag: tag);

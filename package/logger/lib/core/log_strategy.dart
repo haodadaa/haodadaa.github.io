@@ -14,12 +14,3 @@ class DebugPrintLogStrategy extends LogStrategy {
     messageLines.forEach(debugPrint);
   }
 }
-
-class PrintLogStrategy extends LogStrategy {
-  const PrintLogStrategy() : super();
-
-  @override
-  void log(List<String> messageLines) {
-    messageLines.forEach(print);
-  }
-}

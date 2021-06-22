@@ -81,7 +81,8 @@ class ThemeDiskWidget extends StatelessWidget {
   final List<String> assets;
   final Animation<double> rotateAnimation;
 
-  ThemeDiskWidget(this.assets, this.rotateAnimation);
+  const ThemeDiskWidget(this.assets, this.rotateAnimation, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

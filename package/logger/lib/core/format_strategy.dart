@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'dart:isolate';
 
 import '../logger.dart';
 import '../support/ansi_color.dart';
 import 'log_strategy.dart';
-// import 'package:stack_trace/stack_trace.dart';
 
 abstract class FormatStrategy {
   const FormatStrategy();
@@ -19,24 +17,20 @@ abstract class FormatStrategy {
 }
 
 class DefaultFormatStrategy extends FormatStrategy {
-  static const int CHUNK_SIZE = 4000;
-
-  static const int MIN_STACK_OFFSET = 5;
-
-  static const String _TOP_LEFT_CORNER = '┌';
-  static const String _BOTTOM_LEFT_CORNER = '└';
-  static const String _MIDDLE_CORNER = '├';
-  static const String _HORIZONTAL_LINE = '│';
-  static const String _DOUBLE_DIVIDER =
+  static const String _topLeftCorner = '┌';
+  static const String _bottomLeftCorner = '└';
+  static const String _middleCorner = '├';
+  static const String _horizontalLine = '│';
+  static const String _doubleDivider =
       "────────────────────────────────────────────────────────";
-  static const String _SINGLE_DIVIDER =
+  static const String _singleDivider =
       "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄";
-  static const String _TOP_BORDER =
-      _TOP_LEFT_CORNER + _DOUBLE_DIVIDER + _DOUBLE_DIVIDER;
-  static const String _BOTTOM_BORDER =
-      _BOTTOM_LEFT_CORNER + _DOUBLE_DIVIDER + _DOUBLE_DIVIDER;
-  static const String _MIDDLE_BORDER =
-      _MIDDLE_CORNER + _SINGLE_DIVIDER + _SINGLE_DIVIDER;
+  static const String _topBorder =
+      _topLeftCorner + _doubleDivider + _doubleDivider;
+  static const String _bottomBorder =
+      _bottomLeftCorner + _doubleDivider + _doubleDivider;
+  static const String _middleBorder =
+      _middleCorner + _singleDivider + _singleDivider;
 
   static final Map<LogLevel, AnsiColor> _levelColors = {
     LogLevel.verbose: AnsiColor()..gray(level: 0.5),
@@ -74,18 +68,18 @@ class DefaultFormatStrategy extends FormatStrategy {
     this.errorMethodCount,
     this.methodOffset = 0,
     this.showThreadInfo = false,
-    this.logStrategy = const PrintLogStrategy(),
+    this.logStrategy = const DebugPrintLogStrategy(),
   }) : super();
 
   @override
   void log(
     LogLevel level,
-    String? logTag,
+    String? tag,
     dynamic message,
     dynamic error,
     StackTrace? stackTrace,
   ) {
-    String? tag = _formatTag(logTag);
+    String? formatTag = _formatTag(tag);
 
     String messageStr = _formatMessage(message);
 
@@ -93,16 +87,10 @@ class DefaultFormatStrategy extends FormatStrategy {
     result = _addTopBorder(result);
 
     /// Tag
-    if (tag != null) {
-      result = _addContent(result, tag);
+    if (formatTag != null) {
+      result = _addContent(result, formatTag);
       result = _addDivider(result);
     }
-
-    Isolate.current;
-    // /// current StackTrace
-    // result = _addContent(
-    //     result, _formatStackTrace(StackTrace.current, methodCount) ?? '');
-    // result = _addDivider(result);
 
     /// error
     if (error != null) {
@@ -150,22 +138,21 @@ class DefaultFormatStrategy extends FormatStrategy {
   }
 
   String _addTopBorder(String content) {
-    return content + _TOP_BORDER + '\n';
+    return content + _topBorder + '\n';
   }
 
   String _addDivider(String content) {
-    return content + _MIDDLE_BORDER + '\n';
+    return content + _middleBorder + '\n';
   }
 
   String _addBottomBorder(String content) {
-    return content + _BOTTOM_BORDER;
+    return content + _bottomBorder;
   }
 
   String _addContent(String content, String message) {
     final pattern = RegExp('.{1,1024}');
     for (RegExpMatch match in pattern.allMatches(message)) {
-      content =
-          content + _HORIZONTAL_LINE + ' ' + (match.group(0) ?? '') + '\n';
+      content = content + _horizontalLine + ' ' + (match.group(0) ?? '') + '\n';
     }
     return content;
   }

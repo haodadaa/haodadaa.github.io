@@ -13,7 +13,6 @@ class Logger {
 
   static void printer(Printer printer) {
     Logger._printer = printer;
-    StackTrace.current;
   }
 
   static void addLogAdapter(LogAdapter adapter) {

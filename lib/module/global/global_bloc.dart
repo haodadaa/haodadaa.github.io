@@ -104,21 +104,21 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
       TextStyle textStyle;
       switch (event.appTextStyle) {
         case AppTextStyle.normal:
-          textStyle = TextStyle(
+          textStyle = const TextStyle(
             color: Colors.black87,
             fontSize: 14,
             fontWeight: FontWeight.w500,
             decoration: TextDecoration.none,
-            fontFamilyFallback: const ["PingFang SC", "Heiti SC"],
+            fontFamilyFallback: ["PingFang SC", "Heiti SC"],
           );
           break;
         case AppTextStyle.red:
-          textStyle = TextStyle(
+          textStyle = const TextStyle(
             color: Colors.red,
             fontSize: 14,
             fontWeight: FontWeight.w500,
             decoration: TextDecoration.overline,
-            fontFamilyFallback: const ["PingFang SC", "Heiti SC"],
+            fontFamilyFallback: ["PingFang SC", "Heiti SC"],
           );
           break;
       }
@@ -201,7 +201,7 @@ const normalTextStyle = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w500,
   decoration: TextDecoration.none,
-  fontFamilyFallback: const ["PingFang SC", "Heiti SC"],
+  fontFamilyFallback: ["PingFang SC", "Heiti SC"],
 );
 
 const redTextStyle = TextStyle(
@@ -209,11 +209,11 @@ const redTextStyle = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w500,
   decoration: TextDecoration.overline,
-  fontFamilyFallback: const ["PingFang SC", "Heiti SC"],
+  fontFamilyFallback: ["PingFang SC", "Heiti SC"],
 );
 
 // endregion
-extension appGlobalExt on GlobalState {
+extension AppGlobalExt on GlobalState {
   AppGlobal appGlobal(
       {ThemeStyle? themeStyle, Locale? locale, TextStyle? textStyle}) {
     return AppGlobal(
