@@ -62,39 +62,41 @@ class _FoldWidgetState extends State<FoldWidget>
 
   @override
   Widget build(BuildContext context) {
+    Widget result = Stack(
+      children: [
+        widget.display!,
+        Positioned(
+          top: 0,
+          right: 0,
+          child: GestureDetector(
+            onTap: () {
+              toggleAnim();
+            },
+            child: Container(
+              width: 20,
+              height: 20,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(8),
+                ),
+                color: Colors.green,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
     return Stack(
       children: [
         if (widget.background != null) widget.background!,
         if (widget.display != null)
           AnimatedBuilder(
-            animation: animation,
+            animation: animController,
+            child: result,
             builder: (context, child) {
               return Container(
                 padding: animation.value,
-                child: Stack(
-                  children: [
-                    widget.display!,
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: GestureDetector(
-                        onTap: () {
-                          toggleAnim();
-                        },
-                        child: Container(
-                          width: 20,
-                          height: 20,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(8),
-                            ),
-                            color: Colors.green,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                child: child,
               );
             },
           ),

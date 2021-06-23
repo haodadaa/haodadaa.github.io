@@ -28,6 +28,16 @@
 
   <title>blog</title>
   <link rel="manifest" href="manifest.json">
+  <!--  百度统计-->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+       var hm = document.createElement("script");
+       hm.src = "https://hm.baidu.com/hm.js?659853a348265d0e5488181cbfd89ced";
+       var s = document.getElementsByTagName("script")[0];
+       s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 </head>
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
@@ -40,6 +50,7 @@
       });
     }
   </script>
+  <!--  主程序-->
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>

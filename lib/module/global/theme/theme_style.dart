@@ -17,13 +17,13 @@ class ThemeStyle {
 
   ThemeStyle.dark({
     this.backgroundColor = const Color(0xDD000000),
-    this.primaryColor = const Color(0xFF6897BB),
+    this.primaryColor = const Color(0xFF3E4348),
     this.selectColor = const Color(0xDDFFFFFF),
   });
 
   ThemeStyle.light({
-    this.backgroundColor = const Color(0xFFF5F5F5),
-    this.primaryColor = const Color(0xFF6897BB),
+    this.backgroundColor = const Color(0xFFD3D3D3),
+    this.primaryColor = const Color(0xFFF5F5F5),
     this.selectColor = const Color(0xFFFF00FF),
   });
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class MouseShadowWidget extends StatefulWidget {
   final Color? color;
   final Color? shadowColor;
+  final double? shadowRadius;
   final double? translate;
   final Widget child;
 
@@ -12,6 +13,7 @@ class MouseShadowWidget extends StatefulWidget {
     required this.child,
     this.color,
     this.shadowColor,
+    this.shadowRadius,
     this.translate,
   }) : super(key: key);
 
@@ -75,7 +77,8 @@ class _MouseShadowWidgetState extends State<MouseShadowWidget>
                   BoxShadow(
                     color: (widget.shadowColor ?? const Color(0x61000000))
                         .withOpacity(shadowAnimation.value),
-                    blurRadius: 4 * shadowAnimation.value,
+                    blurRadius:
+                        (widget.shadowRadius ?? 4) * shadowAnimation.value,
                   ),
                 ],
               ),
