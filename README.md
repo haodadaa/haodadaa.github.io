@@ -1,6 +1,8 @@
 ## Github Page Source
 
-A Flutter Project
+Github Page 源码
+
+【已弃用】源码已迁移到私有仓库，私有仓库配置自动化部署，并提交到当前仓库master分支;flutter_source分支不再更新
 
 [![Deploy](https://github.com/haodadaa/haodadaa.github.io/actions/workflows/main.yml/badge.svg)](https://github.com/haodadaa/haodadaa.github.io/actions/workflows/main.yml)
 
